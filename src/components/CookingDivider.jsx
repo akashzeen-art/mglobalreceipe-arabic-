@@ -7,7 +7,7 @@ export default function CookingDivider() {
     <div className="relative flex items-center justify-center py-2 overflow-hidden" aria-hidden>
       {/* line left */}
       <motion.div
-        className="h-px flex-1 bg-gradient-to-r from-transparent to-amber-400/40"
+        className="h-px flex-1 bg-gradient-to-r from-transparent to-orange-400/40"
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
@@ -21,7 +21,7 @@ export default function CookingDivider() {
         {[0, 1, 2].map((i) => (
           <motion.div
             key={i}
-            className="absolute -top-5 h-5 w-0.5 rounded-full bg-amber-400/40"
+            className="absolute -top-5 h-5 w-0.5 rounded-full bg-orange-400/40"
             style={{ left: `${i * 8 - 8}px` }}
             animate={{ y: [0, -14], opacity: [0.5, 0], scaleX: [1, 1.8] }}
             transition={{ duration: 1.4, delay: i * 0.3, repeat: Infinity, ease: 'easeOut' }}
@@ -40,7 +40,7 @@ export default function CookingDivider() {
 
       {/* line right */}
       <motion.div
-        className="h-px flex-1 bg-gradient-to-l from-transparent to-amber-400/40"
+        className="h-px flex-1 bg-gradient-to-l from-transparent to-orange-400/40"
         initial={{ scaleX: 0 }}
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}

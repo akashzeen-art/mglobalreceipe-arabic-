@@ -27,7 +27,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="relative min-h-svh bg-[#fdf6ec] text-[#3b2a1a] antialiased">
+    <div className="relative min-h-svh bg-brand-bg text-brand-text antialiased">
 
       {/* preloader — first visit only */}
       {showPreloader && <Preloader onComplete={onPreloaderComplete} />}

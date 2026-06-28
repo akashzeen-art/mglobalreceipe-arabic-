@@ -26,8 +26,8 @@ export default function VideoGallery() {
     <FigmaSection id="gallery">
       <motion.div initial={{ opacity:0, y:40 }} whileInView={{ opacity:1, y:0 }}
         viewport={{ once:true, margin:'-12%' }} transition={{ duration:0.65, ease:[0.22,1,0.36,1] }} className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-700/85">في المطبخ</p>
-        <h2 className="mt-3 font-display text-3xl font-bold text-amber-950 lg:text-4xl">معرض الفيديوهات</h2>
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-orange-700/85">في المطبخ</p>
+        <h2 className="mt-3 font-display text-3xl font-bold text-orange-950 lg:text-4xl">معرض الفيديوهات</h2>
         <p className="mx-auto mt-4 max-w-xl text-stone-600">مرّر المؤشر للتشغيل — اضغط للعرض بالشاشة الكاملة.</p>
       </motion.div>
 
@@ -43,13 +43,13 @@ export default function VideoGallery() {
                   <motion.img variants={imgMotion} src={item.thumb} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
                   <motion.div variants={shadeMotion} className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   <motion.div variants={playMotion} className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-stone-900 shadow-[0_0_36px_rgba(251,191,36,0.5)] ring-2 ring-amber-300/70">
+                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-stone-900 shadow-[0_0_36px_rgba(249,115,22,0.5)] ring-2 ring-orange-300/70">
                       <svg className="ml-0.5 h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden><path d="M8 5v14l11-7z" /></svg>
                     </span>
                   </motion.div>
                   <span className="pointer-events-none absolute bottom-3 right-3 rounded-md bg-black/55 px-2 py-0.5 text-[11px] font-medium tabular-nums text-white/95 backdrop-blur-sm">{item.duration}</span>
                 </span>
-                <span className="block px-3 py-2.5 font-display text-[15px] font-medium leading-snug text-amber-950 lg:px-4 lg:py-3 lg:text-lg">{item.title}</span>
+                <span className="block px-3 py-2.5 font-display text-[15px] font-medium leading-snug text-orange-950 lg:px-4 lg:py-3 lg:text-lg">{item.title}</span>
               </div>
             </motion.button>
           </motion.li>

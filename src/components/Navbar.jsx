@@ -9,13 +9,13 @@ const LINKS = [
 ]
 
 const linkClass =
-  'group relative py-1 text-[15px] font-medium leading-none text-stone-700 transition-colors hover:text-amber-800'
+  'group relative py-1 text-[15px] font-medium leading-none text-stone-700 transition-colors hover:text-orange-800'
 
 function NavLink({ to, label }) {
   return (
     <Link to={to} className={linkClass} onClick={() => window.scrollTo(0, 0)}>
       <span className="relative z-10">{label}</span>
-      <span className="absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-amber-600 via-orange-500 to-amber-700 transition-transform duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
+      <span className="absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 transition-transform duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
     </Link>
   )
 }
@@ -44,7 +44,7 @@ export default function Navbar() {
     <motion.header
       className={`sticky top-0 z-[120] border-b transition-colors duration-500 ${
         scrolled
-          ? 'border-amber-200/60 bg-[#fdf6ec]/80 shadow-md shadow-amber-900/10 backdrop-blur-2xl'
+          ? 'border-orange-200/60 bg-brand-bg/80 shadow-md shadow-orange-900/10 backdrop-blur-2xl'
           : 'border-transparent bg-transparent'
       }`}
       initial={false}
@@ -55,7 +55,7 @@ export default function Navbar() {
             <Link to="/" onClick={closeMenu} aria-label="الرئيسية">
               <img
                 src="/logo/4.png"
-                alt="Mshafaq"
+                alt="Global Recipe"
                 className="h-8 w-auto md:h-10"
               />
             </Link>
@@ -71,7 +71,7 @@ export default function Navbar() {
 
           <motion.button
             type="button"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] border border-amber-300/60 bg-amber-50/80 text-amber-900 backdrop-blur-md md:hidden"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[14px] border border-orange-300/60 bg-orange-50/80 text-orange-900 backdrop-blur-md md:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
@@ -94,7 +94,7 @@ export default function Navbar() {
         {open && (
           <motion.div
             id="mobile-nav"
-            className="overflow-hidden border-t border-amber-200/50 md:hidden"
+            className="overflow-hidden border-t border-orange-200/50 md:hidden"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -110,7 +110,7 @@ export default function Navbar() {
                 >
                   <Link
                     to={to}
-                    className="block rounded-[14px] px-4 py-3 text-[15px] font-medium text-stone-700 transition hover:bg-amber-100/70"
+                    className="block rounded-[14px] px-4 py-3 text-[15px] font-medium text-stone-700 transition hover:bg-orange-100/70"
                     onClick={closeMenu}
                   >
                     {label}

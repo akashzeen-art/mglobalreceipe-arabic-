@@ -7,7 +7,7 @@ export default function ChoppingKnife() {
     <div className="relative flex items-center justify-center py-6 overflow-hidden" aria-hidden>
 
       {/* lines */}
-      <motion.div className="h-px flex-1 bg-gradient-to-r from-transparent to-amber-400/40"
+      <motion.div className="h-px flex-1 bg-gradient-to-r from-transparent to-orange-400/40"
         initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }}
         transition={{ duration: 1 }} style={{ originX: 0 }} />
 
@@ -38,7 +38,7 @@ export default function ChoppingKnife() {
         </motion.span>
       </div>
 
-      <motion.div className="h-px flex-1 bg-gradient-to-l from-transparent to-amber-400/40"
+      <motion.div className="h-px flex-1 bg-gradient-to-l from-transparent to-orange-400/40"
         initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }}
         transition={{ duration: 1 }} style={{ originX: 1 }} />
     </div>

@@ -14,8 +14,8 @@ export default function Categories() {
     <FigmaSection id="categories">
       <motion.div initial={{ opacity:0, y:36 }} whileInView={{ opacity:1, y:0 }}
         viewport={{ once:true, margin:'-12%' }} transition={{ duration:0.65, ease:[0.22,1,0.36,1] }} className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-700/85">تصفح حسب النوع</p>
-        <h2 className="mt-3 font-display text-3xl font-bold text-amber-950 lg:text-4xl">تصنيفات الطبخ</h2>
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-orange-700/85">تصفح حسب النوع</p>
+        <h2 className="mt-3 font-display text-3xl font-bold text-orange-950 lg:text-4xl">تصنيفات الطبخ</h2>
         <p className="mx-auto mt-4 max-w-lg text-stone-600">صور غنية، تصفح واكتشف عالم من النكهات.</p>
       </motion.div>
 
@@ -26,7 +26,7 @@ export default function Categories() {
             whileInView={{ opacity:1, y:0 }}
             viewport={{ once:true, amount:0.35 }}
             transition={{ duration:0.6, ease:[0.22,1,0.36,1] }}>
-            <Link to={`/category/${c.id}`} className="block rounded-[14px] outline-none focus-visible:ring-2 focus-visible:ring-amber-400 lg:rounded-2xl">
+            <Link to={`/category/${c.id}`} className="block rounded-[14px] outline-none focus-visible:ring-2 focus-visible:ring-orange-400 lg:rounded-2xl">
               <motion.div variants={card} initial="rest" whileHover="hover"
                 className="glass-panel relative h-[220px] w-full cursor-pointer overflow-hidden rounded-[14px] lg:h-[260px] lg:rounded-2xl"
                 whileTap={{ scale:0.99 }} transition={{ type:'spring', stiffness:380, damping:26 }}>

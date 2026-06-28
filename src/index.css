@@ -3,6 +3,10 @@
 @theme {
   --font-display: 'Outfit', system-ui, sans-serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
+  --color-brand-bg: #fff8f4;
+  --color-brand-text: #3d2614;
+  --color-brand-brown: #5c3d1e;
+  --color-brand-orange: #e8732a;
 }
 
 html {
@@ -13,8 +17,8 @@ body {
   margin: 0;
   min-height: 100svh;
   font-family: var(--font-body);
-  background-color: #fdf6ec;
-  color: #3b2a1a;
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-text);
 }
 
 #root {
@@ -23,19 +27,19 @@ body {
 
 .glass-panel {
   border-radius: 16px;
-  border: 1px solid rgba(180, 120, 60, 0.18);
-  background: rgba(255, 248, 235, 0.92);
+  border: 1px solid rgba(232, 115, 42, 0.18);
+  background: rgba(255, 250, 246, 0.92);
   backdrop-filter: blur(14px);
-  box-shadow: 0 4px 24px rgba(160, 100, 40, 0.10);
+  box-shadow: 0 4px 24px rgba(232, 115, 42, 0.10);
 }
 
 .glass-panel-strong {
   border-radius: 18px;
-  border: 1px solid rgba(180, 120, 60, 0.22);
-  background: rgba(255, 245, 225, 0.95);
+  border: 1px solid rgba(232, 115, 42, 0.22);
+  background: rgba(255, 245, 238, 0.95);
   backdrop-filter: blur(20px);
   box-shadow:
-    0 4px 24px rgba(160, 100, 40, 0.13),
+    0 4px 24px rgba(232, 115, 42, 0.13),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 

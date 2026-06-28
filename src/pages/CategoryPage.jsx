@@ -92,7 +92,7 @@ function CategoryPageInner({ slug }) {
             <header className="glass-panel-strong rounded-[14px] px-5 py-6 lg:rounded-2xl lg:px-8 lg:py-8">
               <Link
                 to="/#categories"
-                className="inline-flex items-center gap-2 text-sm font-medium text-amber-700 transition hover:text-amber-900"
+                className="inline-flex items-center gap-2 text-sm font-medium text-orange-700 transition hover:text-orange-900"
               >
                 <span aria-hidden>→</span>
                 التصنيفات
@@ -103,7 +103,7 @@ function CategoryPageInner({ slug }) {
                 transition={{ duration: 0.45, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="mt-5"
               >
-                <h1 className="font-display text-2xl font-bold tracking-tight text-amber-950 lg:text-4xl">
+                <h1 className="font-display text-2xl font-bold tracking-tight text-orange-950 lg:text-4xl">
                   {meta.title}
                 </h1>
                 <p className="mt-3 max-w-2xl text-base leading-relaxed text-stone-600 lg:text-lg">
@@ -120,8 +120,8 @@ function CategoryPageInner({ slug }) {
                   onClick={() => setFilter(f.id)}
                   className={`rounded-full border px-4 py-2 text-sm font-medium transition duration-300 ${
                     filter === f.id
-                      ? 'border-amber-500/60 bg-amber-100 text-amber-900 shadow-[0_0_24px_-8px_rgba(180,90,20,0.3)]'
-                      : 'border-amber-200/60 bg-amber-50/60 text-stone-600 backdrop-blur-md hover:border-amber-400/60 hover:text-amber-900'
+                      ? 'border-orange-500/60 bg-orange-100 text-orange-900 shadow-[0_0_24px_-8px_rgba(234,88,12,0.3)]'
+                      : 'border-orange-200/60 bg-orange-50/60 text-stone-600 backdrop-blur-md hover:border-orange-400/60 hover:text-orange-900'
                   }`}
                 >
                   {f.label}
@@ -159,13 +159,13 @@ function CategoryPageInner({ slug }) {
                         />
                         <motion.div
                           variants={shadeMotion}
-                          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-amber-900/15"
+                          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-orange-900/15"
                         />
                         <motion.div
                           variants={playMotion}
                           className="pointer-events-none absolute inset-0 flex items-center justify-center"
                         >
-                          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-stone-900 shadow-[0_0_40px_rgba(251,191,36,0.45)] ring-2 ring-amber-300/70">
+                          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-stone-900 shadow-[0_0_40px_rgba(249,115,22,0.45)] ring-2 ring-orange-300/70">
                             <svg
                               className="ml-0.5 h-6 w-6"
                               viewBox="0 0 24 24"
@@ -180,7 +180,7 @@ function CategoryPageInner({ slug }) {
                           {item.duration}
                         </span>
                       </span>
-                      <span className="block h-[56px] px-3 py-2.5 font-display text-[13px] font-medium leading-snug text-amber-950 line-clamp-2 lg:px-4 lg:py-3 lg:text-[14px]">
+                      <span className="block h-[56px] px-3 py-2.5 font-display text-[13px] font-medium leading-snug text-orange-950 line-clamp-2 lg:px-4 lg:py-3 lg:text-[14px]">
                         {item.title}
                       </span>
                     </div>
@@ -213,7 +213,7 @@ function CategoryPageInner({ slug }) {
             onClick={close}
           >
             <motion.div
-              className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-amber-200/60 bg-[#fdf6ec] shadow-2xl shadow-amber-900/20"
+              className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-orange-200/60 bg-brand-bg shadow-2xl shadow-orange-900/20"
               initial={{ opacity: 0, scale: 0.9, y: 28 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 18 }}
@@ -222,7 +222,7 @@ function CategoryPageInner({ slug }) {
             >
               <motion.button
                 type="button"
-                className="absolute right-3 top-3 z-[1] rounded-full border border-amber-300/60 bg-amber-50 px-4 py-2 text-sm font-medium text-amber-900 backdrop-blur-md"
+                className="absolute right-3 top-3 z-[1] rounded-full border border-orange-300/60 bg-orange-50 px-4 py-2 text-sm font-medium text-orange-900 backdrop-blur-md"
                 onClick={close}
                 whileHover={{ scale: 1.05, backgroundColor: 'rgba(0,0,0,0.88)' }}
                 whileTap={{ scale: 0.96 }}
@@ -238,7 +238,7 @@ function CategoryPageInner({ slug }) {
                 autoPlay
                 playsInline
               />
-              <p className="border-t border-amber-200/50 px-4 py-3 text-sm text-stone-600">{active.title}</p>
+              <p className="border-t border-orange-200/50 px-4 py-3 text-sm text-stone-600">{active.title}</p>
             </motion.div>
           </motion.div>
         )}
