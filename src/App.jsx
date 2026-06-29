@@ -6,6 +6,7 @@ import ScrollToTop from './components/ScrollToTop.jsx'
 import CookingParticles from './components/CookingParticles.jsx'
 import CategoryPage from './pages/CategoryPage.jsx'
 import HomePage from './pages/HomePage.jsx'
+import AccountPage from './pages/AccountPage.jsx'
 
 const VISITED_KEY = 'ar_cooking_visited'
 
@@ -40,6 +41,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/category/:slug" element={<CategoryPage />} />
+          <Route path="/account" element={<AccountPage />} />
         </Routes>
       </div>
     </div>

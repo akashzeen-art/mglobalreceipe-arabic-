@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Footer from '../components/Footer.jsx'
+import { useGatedVideo } from '../hooks/useGatedVideo.jsx'
 import { filterCategoryVideos, getCategoryDetail, getVideosForCategory } from '../data/videos.js'
 import { shuffle } from '../utils'
 
@@ -56,26 +57,13 @@ const listItem = {
 function CategoryPageInner({ slug }) {
   const meta = getCategoryDetail(slug)
   const [filter, setFilter] = useState('all')
-  const [active, setActive] = useState(null)
+  const { requestVideo, gateUi, loading } = useGatedVideo({ playerVariant: 'light' })
 
   const [baseList] = useState(() => shuffle(getVideosForCategory(slug)))
   const displayed = useMemo(
     () => filterCategoryVideos(baseList, filter),
     [baseList, filter],
   )
-
-  const close = useCallback(() => setActive(null), [])
-
-  useEffect(() => {
-    if (!active) return
-    const onKey = (e) => e.key === 'Escape' && close()
-    window.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
-  }, [active, close])
 
   if (!meta) return null
 
@@ -145,7 +133,7 @@ function CategoryPageInner({ slug }) {
                     whileHover="hover"
                     whileTap={{ scale: 0.985 }}
                     className="relative mx-auto w-full cursor-pointer overflow-hidden rounded-[14px] text-left xl:w-[270px] xl:rounded-2xl"
-                    onClick={() => setActive(item)}
+                    onClick={() => !loading && requestVideo(item)}
                   >
                     <div className="glass-panel relative w-full overflow-hidden p-0 shadow-lg shadow-black/20 ring-1 ring-white/5">
                       <span className="relative block h-[180px] w-full overflow-hidden bg-black/50 xl:h-[220px]">
@@ -198,51 +186,7 @@ function CategoryPageInner({ slug }) {
 
       <Footer />
 
-      <AnimatePresence mode="wait">
-        {active && (
-          <motion.div
-            key={active.id}
-            className="fixed inset-0 z-[300] flex items-center justify-center bg-black/80 p-4 backdrop-blur-md"
-            role="dialog"
-            aria-modal="true"
-            aria-label={active.title}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            onClick={close}
-          >
-            <motion.div
-              className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-orange-200/60 bg-brand-bg shadow-2xl shadow-orange-900/20"
-              initial={{ opacity: 0, scale: 0.9, y: 28 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 18 }}
-              transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <motion.button
-                type="button"
-                className="absolute right-3 top-3 z-[1] rounded-full border border-orange-300/60 bg-orange-50 px-4 py-2 text-sm font-medium text-orange-900 backdrop-blur-md"
-                onClick={close}
-                whileHover={{ scale: 1.05, backgroundColor: 'rgba(0,0,0,0.88)' }}
-                whileTap={{ scale: 0.96 }}
-              >
-                إغلاق
-              </motion.button>
-              <video
-                key={active.videoUrl}
-                className="aspect-video w-full bg-black object-contain"
-                src={active.videoUrl}
-                controls
-                controlsList="nodownload"
-                autoPlay
-                playsInline
-              />
-              <p className="border-t border-orange-200/50 px-4 py-3 text-sm text-stone-600">{active.title}</p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {gateUi}
     </>
   )
 }

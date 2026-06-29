@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/prod/:path*",
+      "destination": "http://159.89.163.174/prod/:path*"
+    }
+  ]
+}

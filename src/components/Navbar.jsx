@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useAuth } from '../context/AuthContext.jsx'
 
 const LINKS = [
   { to: '/', label: 'الرئيسية' },
   { to: '/#explore', label: 'استكشف' },
   { to: '/#categories', label: 'التصنيفات' },
+  { to: '/account', label: 'حسابي' },
 ]
 
 const linkClass =
@@ -23,6 +25,7 @@ function NavLink({ to, label }) {
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { isActive } = useAuth()
 
   const closeMenu = useCallback(() => setOpen(false), [])
 
@@ -67,6 +70,13 @@ export default function Navbar() {
                 <NavLink to={to} label={label} />
               </li>
             ))}
+            {isActive && (
+              <li>
+                <span className="rounded-full bg-orange-100 px-2.5 py-1 text-[11px] font-semibold text-orange-800">
+                  مشترك
+                </span>
+              </li>
+            )}
           </ul>
 
           <motion.button

@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { GALLERY_VIDEOS } from '../config'
 import { FigmaSection } from './FigmaLayout.jsx'
+import { useGatedVideo } from '../hooks/useGatedVideo.jsx'
 import { shuffle } from '../utils'
 
 const card = { rest:{}, hover:{} }
@@ -11,16 +12,7 @@ const playMotion = { rest:{ scale:0.55, opacity:0 }, hover:{ scale:1, opacity:1,
 
 export default function VideoGallery() {
   const [videos] = useState(() => shuffle(GALLERY_VIDEOS))
-  const [active, setActive] = useState(null)
-  const close = useCallback(() => setActive(null), [])
-
-  useEffect(() => {
-    if (!active) return
-    const onKey = (e) => e.key === 'Escape' && close()
-    window.addEventListener('keydown', onKey)
-    document.body.style.overflow = 'hidden'
-    return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = '' }
-  }, [active, close])
+  const { requestVideo, gateUi, loading } = useGatedVideo()
 
   return (
     <FigmaSection id="gallery">
@@ -37,7 +29,7 @@ export default function VideoGallery() {
             viewport={{ once:true, margin:'-6%' }} transition={{ duration:0.5, delay:i*0.05, ease:[0.22,1,0.36,1] }} className="w-full">
             <motion.button type="button" variants={card} initial="rest" whileHover="hover" whileTap={{ scale:0.985 }}
               className="relative mx-auto w-full cursor-pointer overflow-hidden rounded-[14px] text-left xl:w-[270px] xl:rounded-2xl"
-              onClick={() => setActive(item)}>
+              onClick={() => !loading && requestVideo(item)}>
               <div className="glass-panel relative w-full overflow-hidden p-0">
                 <span className="relative block h-[110px] w-full overflow-hidden bg-black/50 xl:h-[180px]">
                   <motion.img variants={imgMotion} src={item.thumb} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
@@ -56,23 +48,7 @@ export default function VideoGallery() {
         ))}
       </ul>
 
-      <AnimatePresence>
-        {active && (
-          <motion.div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/80 p-4 backdrop-blur-md"
-            role="dialog" aria-modal="true" initial={{ opacity:0 }} animate={{ opacity:1 }} exit={{ opacity:0 }}
-            transition={{ duration:0.35, ease:[0.22,1,0.36,1] }} onClick={close}>
-            <motion.div className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-white/15 bg-black/90 shadow-2xl"
-              initial={{ opacity:0, scale:0.9, y:24 }} animate={{ opacity:1, scale:1, y:0 }}
-              exit={{ opacity:0, scale:0.92, y:16 }} transition={{ duration:0.4, ease:[0.22,1,0.36,1] }}
-              onClick={(e) => e.stopPropagation()}>
-              <motion.button type="button" className="absolute right-3 top-3 z-[1] rounded-full border border-white/20 bg-black/60 px-4 py-2 text-sm font-medium text-white backdrop-blur-md"
-                onClick={close} whileHover={{ scale:1.05 }} whileTap={{ scale:0.96 }}>إغلاق</motion.button>
-              <video key={active.src} className="aspect-video w-full bg-black object-contain" src={active.src} controls controlsList="nodownload" autoPlay playsInline />
-              <p className="border-t border-white/10 px-4 py-3 text-sm text-white/70">{active.title}</p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {gateUi}
     </FigmaSection>
   )
 }
