@@ -17,9 +17,6 @@ export default function Footer() {
             <Link to="/#gallery" className="transition hover:text-orange-800">المعرض</Link>
           </nav>
         </div>
-        <p className="mx-auto mt-10 max-w-[1200px] text-center text-xs text-stone-400 lg:mt-12 lg:text-right">
-          صُنع بكل حب ❤️
-        </p>
       </div>
     </footer>
   )

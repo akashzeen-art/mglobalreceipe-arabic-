@@ -3,7 +3,6 @@ import { FigmaSection } from './FigmaLayout.jsx'
 
 const ITEMS = [
   { title: 'تعلّم في أي وقت ومكان', detail: 'بسرعتك ومطبخك — دروس تناسب جدولك الحقيقي.', icon: <motion.span className="text-3xl" animate={{ rotate:[-5,5,-5], y:[0,-4,0] }} transition={{ duration:3, repeat:Infinity, ease:'easeInOut' }}>⏰</motion.span> },
-  { title: 'فيديوهات طبخ مجانية ١٠٠٪', detail: 'لا اشتراكات مطلوبة لبدء بناء مهاراتك الحقيقية.', icon: <motion.span className="text-3xl" animate={{ scale:[1,1.15,1] }} transition={{ duration:2, repeat:Infinity, ease:'easeInOut' }}>🎬</motion.span> },
   { title: 'من المبتدئ إلى المتقدم', detail: 'الأساسيات أولاً — ثم العمق حين تكون مستعداً.', icon: <motion.span className="text-3xl" animate={{ rotate:[0,10,-10,0] }} transition={{ duration:2.5, repeat:Infinity, ease:'easeInOut' }}>👨‍🍳</motion.span> },
   { title: 'يعمل على جميع الأجهزة', detail: 'تصميم متجاوب للجوال والجهاز اللوحي وسطح المكتب.', icon: <motion.span className="text-3xl" animate={{ y:[0,-6,0] }} transition={{ duration:2.2, repeat:Infinity, ease:'easeInOut' }}>🍽️</motion.span> },
 ]
@@ -17,7 +16,7 @@ export default function Benefits() {
         <h2 className="mt-3 font-display text-3xl font-bold text-orange-950 lg:text-4xl">المميزات</h2>
       </motion.div>
 
-      <ul className="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-4 lg:gap-6" style={{ perspective:'1100px' }}>
+      <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6" style={{ perspective:'1100px' }}>
         {ITEMS.map((item, i) => (
           <motion.li key={item.title} initial={{ opacity:0, y:28 }} whileInView={{ opacity:1, y:0 }}
             viewport={{ once:true, margin:'-8%' }} transition={{ duration:0.55, delay:i*0.08, ease:[0.22,1,0.36,1] }} className="min-h-0">

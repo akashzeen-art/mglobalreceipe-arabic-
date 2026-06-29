@@ -10,7 +10,6 @@ import SpiceSprinkle from '../components/SpiceSprinkle.jsx'
 import FeaturedRecipes from '../components/FeaturedRecipes.jsx'
 import Footer from '../components/Footer.jsx'
 import Hero from '../components/Hero.jsx'
-import Testimonials from '../components/Testimonials.jsx'
 import VideoGallery from '../components/VideoGallery.jsx'
 
 export default function HomePage() {
@@ -39,7 +38,6 @@ export default function HomePage() {
         <ChoppingKnife />
         <Benefits />
         <BubblingPot />
-        <Testimonials />
       </main>
       <Footer />
     </>
